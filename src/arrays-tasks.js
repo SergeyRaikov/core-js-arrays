@@ -129,7 +129,10 @@ function getStringsLength(arr) {
 function getAverage(arr) {
   if (arr.length !== 0) {
     const average = arr.reduce((a, b) => a + b) / arr.length;
-    return average % 10 === 0 ? average.toFixed(2) : average;
+    if (Number.isInteger(average)) {
+      return average;
+    }
+    return +average.toFixed(2);
   }
   return 0;
 }
@@ -144,8 +147,8 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(arr) {
-  return arr.every((elem, index) => elem.length === elem[index].length);
+function isSameLength(/* arr */) {
+  throw new Error('Not implemented');
 }
 
 /**
